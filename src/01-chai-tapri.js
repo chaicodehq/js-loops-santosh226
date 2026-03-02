@@ -27,5 +27,33 @@
  *   // => { totalChai: 0, totalRevenue: 0 }
  */
 export function chaiTapriRevenue(customers) {
-  // Your code here
+  // Your code here=
+  let totalChai = customers;
+  let totalRevenue = 0;
+
+  if (typeof customers !== "number" || !Number.isInteger(customers) || customers <= 0) {
+    return { totalChai: 0, totalRevenue: 0 };
+  }
+  //way 1
+  // const totalAdrakChai = Math.round(customers / 3);
+  // const totalRegularChai = Math.round(customers - totalAdrakChai);
+
+  // totalRevenue = (totalAdrakChai * 15) + (totalRegularChai * 10);
+
+  //way 2 - loop
+  let isThird = 1;
+  for(let i = 1; i <= customers; i++) {
+    if(isThird === 3) {
+      totalRevenue += 15;
+      isThird = 1;
+    } else {
+      totalRevenue += 10;
+      isThird++;
+    }
+  }
+
+  return {
+    totalChai,
+    totalRevenue
+  }
 }
